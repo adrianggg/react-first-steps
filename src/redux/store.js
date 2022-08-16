@@ -8,6 +8,8 @@ const reducer = (state, action) => {
       return { ...state, columns: [...state.columns, { ...action.payLoad, id: shortid() }]};
     case 'ADD_CARD':
         return { ...state, cards: [...state.cards, {...action.payLoad,id:shortid()}]};
+    case 'CHANGE_SEARCH_VALUE':
+        return {...state,searchValue: action.payLoad};
     default:
       return state;
   }

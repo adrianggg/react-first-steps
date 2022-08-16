@@ -1,6 +1,5 @@
 import styles from './List.module.scss';
 import Column from '../Column/Column';
-import { useState,useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ColumnForm from '../ColumnForm/ColumnForm';
 const List = () => {
