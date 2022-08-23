@@ -7,12 +7,14 @@ export const getAllColumns = ({columns})=>columns;
 export const getListById = ({ lists }, listId) => lists.find(list => list.id === listId)
 export const getColumnsByList = ({columns},listId)=> columns.filter(column => column.listId === listId)
 export const getAllLists = ({lists})=>lists;
+export const getAllFavorite = ({cards})=>cards.filter(card=> card.isFavorite);
 
 export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
 export const addCard = payload => ({ type: 'ADD_CARD', payload });
 export const addList = payload => ({type: 'ADD_LIST',payload});
 
 export const changeSearchValue = payload => ({ type: 'CHANGE_SEARCH_VALUE', payload });
+export const changeIsFavorite = payload => ({type:'TOGGLE_CARD_FAVORITE',payload});
 
 
   const reducer = (state, action) => {
@@ -25,6 +27,8 @@ export const changeSearchValue = payload => ({ type: 'CHANGE_SEARCH_VALUE', payl
         return { ...state, lists: [...state.lists, {...action.payload,id:shortid()}]};
     case 'CHANGE_SEARCH_VALUE':
         return {...state,searchValue: action.payload};
+    case 'TOGGLE_CARD_FAVORITE':
+        return { ...state, cards: state.cards.map(card => (card.id === action.payload) ? { ...card, isFavorite: !card.isFavorite } : card) };
     default:
       return state;
   }
