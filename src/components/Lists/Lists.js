@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { getAllLists } from "../../redux/store";
+import { getAllLists } from "../../redux/listsRedux";
 import styles from './Lists.module.scss';
 import {Link } from 'react-router-dom';
 import ListForm from "../ListForm/ListForm";
 import { useDispatch } from 'react-redux';
-import { changeSearchValue } from '../../redux/store';
+import { changeSearchValue } from '../../redux/searchStringReducer';
 const Lists = () =>{
     const lists = useSelector(getAllLists);
     const dispatch = useDispatch();
